@@ -1,6 +1,6 @@
 # Copula-Opinion-Pooling-application-on-yield-curves
-A non-parametric extention of the Black-Litterman model applied on US yield curve adapted from A.Meucci
-
+A non-parametric extention of the Black-Litterman model applied on US yield curve adapted from Meucci, Attilio, Beyond Black-Litterman: Views on Non-Normal Markets (November 2005).
+Available at SSRN: https://ssrn.com/abstract=848407 or http://dx.doi.org/10.2139/ssrn.848407
 
 
 # 1. Black-Litterman using copula approach (COP)
@@ -24,7 +24,7 @@ The second input of the Black-Litterman method is the manager’s views, which i
 unchanged in this case. As before, the posterior is defined as a weighted average between the
 market and the views, with a confidence coefficient associated to both.
 
-## 3.1 Example on US treasury yield
+
 In this section, we will highlight the drawbacks of using a normally distributed prior using
 empirical data. Using data on the US treasury yield, the COP approach has been implemented,
 using “Beyond Black-Litterman in Practice:a Five-Step Recipe to Input Views on non-Normal
@@ -32,7 +32,7 @@ Markets” from Attilio Meucci, as a benchmark for our analysis. Part of the mat
 project are borrowed from him in this section. The yield rate are plotted below from different
 maturities, from 3 months to 30 years:
 
- ![alt text](https://github.com/BijanSN/Applied-Black-Litterman-on-Swiss-portfolios/blob/master/Plots/Curve%202D%20(2019_05_27%2022_41_04%20UTC).jpg)
+ ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/Curve2D.png)
 
 The plot is coherent with the economic theory; ceteris paribus, for a higher maturity
 corresponds to a higher risk premium and therefore a higher yield. Inversions of the yield curve
@@ -40,13 +40,13 @@ may suggest worsening expectation concerning the future, hence higher maturities
 lesser yield. Furthermore, the yield curve can be derived as well, adding a third dimension:
 maturities.
 
- ![alt text](https://github.com/BijanSN/Applied-Black-Litterman-on-Swiss-portfolios/blob/master/Plots/curve3d2%20(2019_05_27%2022_41_04%20UTC).jpg)
+ ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/3DcurveYield2.png)
 
 
 We can extract the linear dependency among the curves by the simple pearson correlation,
 as shown with this heatmap:
 
- ![alt text](https://github.com/BijanSN/Applied-Black-Litterman-on-Swiss-portfolios/blob/master/Plots/Corr_Yield%20(2019_05_27%2022_41_04%20UTC).jpg)
+ ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/HeatmapYield.png)
 
 
 As our intuition suggests, the closer on yield is from another one, the higher is the
@@ -59,6 +59,7 @@ CDF in order to correctly represent the density of the change in yield.
 
 Compute the market distribution now yield the following results:
 
+ ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/PDFs.jpg)
 
 As we can see, the distribution of the yield changes are leptokurtic and mostly centered
 around zero. Applying univariate Jarque-Bera tests and Mardia’s multivariate test on the change
@@ -74,15 +75,17 @@ It is not really informative by itself, but by extracting the margins from these
 notion of copula emerges.
 
 
-![alt text](https://github.com/BijanSN/Applied-Black-Litterman-on-Swiss-portfolios/blob/master/3m-2y%20(2019_05_27%2022_41_04%20UTC).jpg)
+![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/3m-2y.jpg)
 
- ![alt text](https://github.com/BijanSN/Applied-Black-Litterman-on-Swiss-portfolios/blob/master/Copula%20(2019_05_27%2022_41_04%20UTC).jpg)
-
+![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/Copula.jpg)
 
 
 As we can see, there is a clustering of data on both side of the tails, which corresponds to
 a t-copula. We will therefore use this model to represent the codependency of the weekly
 changes. Finally, the parameter of the t-copula are estimated through a maximum-likelihood.
+
+## 3.1 Example on US treasury yield
+
 Following the same example as Attilio Meucci (2006), the views are defined such that the
 investor expects a steepening of the intermediate yield curve. More specifically, the manager
 expected an increase of 10 basis point of the spread 2-20 years as well as a 5 .bp bullish view
@@ -115,7 +118,7 @@ leptokurtic distributions of the yield change, indicating again a departure from
 approximation.
 
 
-##2. Conclusion
+## Conclusion
 We are at the edge of a financial revolution. With the surge of data, machine learning and
 artificial intelligence techniques applied to finance are becoming more efficient at solving
 financial-related problems than us, humans. A legitimate controversial question can be brought
@@ -131,5 +134,5 @@ combining a specialist view with the market’s can potentially yields higher re
 on certains criteria, such as the confidence of the manager on his views. An extension would
 be to analyse if an optimal confidence level (yielding a better allocation) could be inferred
 
-#Reference 
-[1](http://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=5472145&fileOId=5472158)
+#References 
+[Additional reference](http://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=5472145&fileOId=5472158)
