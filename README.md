@@ -53,21 +53,23 @@ As our intuition suggests, the closer on yield is from another one, the higher i
 correlation between them, since they are affected by the same risk factors. The correlation still
 remains above 0.6, which is consequent. Now, we want to capture other form of dependences,
 through copula. As described before, the first step consists of extracting the market views.
-The empirical (unsmoothed) CDF is shown below. Indeed, the plot looks as a “stair”
-function, which didn’t allow the derivation into the PDF. A kernel smoothing is applied on the
-CDF in order to correctly represent the density of the change in yield.
+The empirical (unsmoothed) CDF looks as a “stair” function, which didn’t allow the derivation into the PDF. A kernel smoothing is applied on the CDF in order to correctly represent the density of the change in yield.
+
+ ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/SmoothedCDF.jpg)
 
 Compute the market distribution now yield the following results:
 
  ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/PDFs.jpg)
 
 As we can see, the distribution of the yield changes are leptokurtic and mostly centered
-around zero. Applying univariate Jarque-Bera tests and Mardia’s multivariate test on the change
+around zero. **Applying univariate Jarque-Bera tests and Mardia’s multivariate test on the change
 of yield shows a clear rejection from the normality distribution assumption mostly due to the
-presence of these fat negative tails. Graphically, looking specifically at the 3 months yield
+presence of these fat negative tails**. Graphically, looking specifically at the 3 months yield
 change and a gaussian distribution shows a clear difference on the distribution of the yield than
 the traditional Black-Litterman model assumption, hence the importance of choosing a
-different market prior.
+different market prior, as sesen below.
+
+ ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/3MLepto.png)
 
 We can now draw simulations of those distribution in order to simulate our market prior.
 For example, the histogram of the 3 month yield versus the 2 year yield can be shown below.
@@ -77,6 +79,8 @@ notion of copula emerges.
 
 ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/3m-2y.jpg)
 
+---
+
 ![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/Copula.jpg)
 
 
@@ -84,7 +88,7 @@ As we can see, there is a clustering of data on both side of the tails, which co
 a t-copula. We will therefore use this model to represent the codependency of the weekly
 changes. Finally, the parameter of the t-copula are estimated through a maximum-likelihood.
 
-## 3.1 Example on US treasury yield
+# An application on a fixed income strategy : 2-5-10 Butterflies
 
 Following the same example as Attilio Meucci (2006), the views are defined such that the
 investor expects a steepening of the intermediate yield curve. More specifically, the manager
@@ -105,6 +109,12 @@ implemented in order to create a new allocation, depending on the framework we a
 A summary table of the difference between the prior and the posterior yield change are
 given below: Each column represent the different maturities, respectively 2,5,10 and 20 years.
 
+
+![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/MeanYield.PNG)
+![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/StdYield.PNG)
+![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/KurtosisYield.PNG)
+![alt text](https://github.com/BijanSN/Copula-Opinion-Pooling-application-on-yield-curves/blob/master/Plots/SkewnessYield.PNG)
+
 As we can expect,the view of the manager twisted the expected mean returns of the
 posterior in line with his expectations. Indeed, the expected mean of the change in yield for the
 2nd maturity of the posterior is slightly lower than the prior’s, consequence of the both views
@@ -122,7 +132,7 @@ approximation.
 We are at the edge of a financial revolution. With the surge of data, machine learning and
 artificial intelligence techniques applied to finance are becoming more efficient at solving
 financial-related problems than us, humans. A legitimate controversial question can be brought
-here; Are we still going to be useful? Are we going to be useful in the future? What is the
+here; Are we still going to be useful? What is the
 competitive advantage a human has over an algorithm? We believe it’s our intuition. The
 Black-Litterman model combines these two paradigms; By combining the expertise we
 gathered the last couples of years with our intuition, we can achieve better results, as seen
@@ -132,7 +142,8 @@ information. This was highlighted through the COP approach from Meucci, but the 
 must go on. To conclude with, we presented a relatively new approach to asset management :
 combining a specialist view with the market’s can potentially yields higher results, depending
 on certains criteria, such as the confidence of the manager on his views. An extension would
-be to analyse if an optimal confidence level (yielding a better allocation) could be inferred
+be to analyse if an optimal confidence level (yielding a better allocation) could be inferred.
 
-#References 
-[Additional reference](http://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=5472145&fileOId=5472158)
+# Additional References 
+* http://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=5472145&fileOId=5472158
+
