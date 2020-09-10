@@ -135,8 +135,7 @@ financial-related problems than us, humans. A legitimate controversial question 
 here; Are we still going to be useful? What is the
 competitive advantage a human has over an algorithm? We believe it’s our intuition. The
 Black-Litterman model combines these two paradigms; By combining the expertise we
-gathered the last couples of years with our intuition, we can achieve better results, as seen
-through the swiss equity example. The assumption of normality was also rejected several times
+gathered the last couples of years with our intuition, we can achieve better results. The assumption of normality was also rejected several times
 through our project, leading the development of new tools in order to correctly model financial
 information. This was highlighted through the COP approach from Meucci, but the research
 must go on. To conclude with, we presented a relatively new approach to asset management :
